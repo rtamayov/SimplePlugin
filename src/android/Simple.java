@@ -9,7 +9,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SimplePlugin extends CordovaPlugin {
+import android.app.Activity;
+import android.content.Intent;
+import android.content.Context;
+
+import pe.entel.cordova.plugin.InputActivity;
+
+public class Simple extends CordovaPlugin {
 
   private CallbackContext scanCallbackContext;
   
@@ -31,9 +37,26 @@ public class SimplePlugin extends CordovaPlugin {
       }
 
 
-		String barcodeValue = "HOLE a TODES!!!!";
-		scanCallbackContext.success(barcodeValue);
+		Context appCtx = cordova.getActivity().getApplicationContext();
+		Intent scanIntent = new Intent(appCtx, InputActivity.class);
+		cordova.startActivityForResult(this, scanIntent, 0);
+
+
 					
       return true;
   }
+  
+  
+   @Override
+    public void onActivityResult (int requestCode, int resultCode, Intent data)
+    {
+		if(data!=null){
+            String resultado = (String) data.getExtras().get("respuesta");
+			scanCallbackContext.success(resultado);
+        }else{
+  
+        }
+
+
+    }
 }

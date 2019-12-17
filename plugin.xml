@@ -21,10 +21,16 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SimplePlugin">
-                <param name="android-package" value="pe.entel.plugin.SimplePlugin"/>
+                <param name="android-package" value="pe.entel.cordova.plugin.Simple"/>
             </feature>
         </config-file>
+		<config-file target="AndroidManifest.xml" parent="application">
+				<activity android:name="pe.entel.cordova.plugin.InputActivity"></activity>
+		</config-file>
 
-        <source-file src="src/android/SimplePlugin.java" target-dir="src/pe/entel/plugin" />
+
+		<resource-file src="src/android/res/layout/activity_input.xml" target="res/layout/activity_input.xml" />
+        <source-file src="src/android/Simple.java" target-dir="src/pe/entel/cordova/plugin" />
+		<source-file src="src/android/InputActivity.java" target-dir="src/pe/entel/cordova/plugin" />
     </platform>
 </plugin>
