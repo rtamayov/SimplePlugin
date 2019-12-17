@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-simpleplugin" version="0.0.1">
+    <name>SimplePlugin</name>
+
+    <description>An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/rtamayov/SimplePlugin.git</repo>
+    <issue>https://github.com/rtamayov/SimplePlugin/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+  
+    <js-module src="www/simpleplugin.js" name="simplePlugin">
+        <clobbers target="window.plugins.simplePlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SimplePlugin">
+                <param name="android-package" value="pe.entel.plugin.SimplePlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/SimplePlugin.java" target-dir="src/pe/entel/plugin" />
+    </platform>
+</plugin>
